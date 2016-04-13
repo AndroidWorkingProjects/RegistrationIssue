@@ -2,23 +2,17 @@ package registration.rahul.com.registration;
 
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
-import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewTreeObserver;
-import android.widget.LinearLayout;
 import android.widget.ScrollView;
-import android.widget.Toast;
-import android.widget.ViewFlipper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,10 +21,7 @@ public class MainActivity extends AppCompatActivity {
 
     private ScrollView sv;
     private ViewPager viewPager;
-    private ViewFlipper viewFlipper;
-    private float lastX;
     private NestedScrollView nestedScrollView;
-    private CollapsingToolbarLayout tb;
     private AppBarLayout appBarLayout;
 
     @Override
@@ -41,9 +32,8 @@ public class MainActivity extends AppCompatActivity {
         viewPager = (ViewPager) findViewById(R.id.pager);
         setupViewPager(viewPager);
 
-        tb = (CollapsingToolbarLayout)findViewById(R.id.collapsing_toolbar);
-        nestedScrollView = (NestedScrollView)findViewById(R.id.scrollLayout);
         appBarLayout = (AppBarLayout)findViewById(R.id.appBar);
+        nestedScrollView = (NestedScrollView)findViewById(R.id.scrollLayout);
 
         final View activityRootView = findViewById(R.id.root);
         activityRootView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
@@ -51,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
             public void onGlobalLayout() {
                 int heightDiff = activityRootView.getRootView().getHeight() - activityRootView.getHeight();
                 if (heightDiff > 100) {
-                    appBarLayout.setExpanded(true,true);
+                    appBarLayout.setExpanded(true);
                 }
                 activityRootView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
             }
